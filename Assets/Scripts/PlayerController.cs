@@ -12,27 +12,25 @@ public class PlayerController : MonoBehaviour {
 		float horizontal = Input.GetAxis ("Horizontal");
 
 
-		//失敗		if (Input.GetKey ("up") == true) || (Input.GetKey ("down") == true) {
-		if (Input.GetKey ("up")) {
-			MoveForwardBaclward(vertical);
+		if (Input.GetKey ("up") || Input.GetKey("down")) {
+			if (Input.GetKey (KeyCode.LeftAlt)) {
+				MoveForwardBackward (vertical);
+			} else {
+				MoveUpDown(vertical);
+			}
 		}
 
-		if (Input.GetKey ("down")) {
-			MoveForwardBaclward(vertical);
-		}
-
-		if (Input.GetKey ("right")) {
+		if (Input.GetKey ("right") || Input.GetKey ("left")) {
 			MoveRightLeft(horizontal);
 		}
-
-		if (Input.GetKey ("left")) {
-			MoveRightLeft(horizontal);
-		}
-
 
 	}
 
-	void MoveForwardBaclward(float vertical){
+	void MoveUpDown(float vertical){
+		transform.Translate (0, vertical * speedY, 0); 
+	}
+
+	void MoveForwardBackward(float vertical){
 		transform.Translate (0, 0, vertical * speedZ); 
 	}
 
