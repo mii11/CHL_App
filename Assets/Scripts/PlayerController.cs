@@ -14,10 +14,8 @@ public class PlayerController : MonoBehaviour {
 
 		if (Input.GetKey ("up") || Input.GetKey("down")) {
 			if (Input.GetKey (KeyCode.LeftAlt)) {
-//				MoveForwardBackward (vertical);
 				MoveUpDown(vertical);
 			} else {
-//				MoveUpDown(vertical);
 				MoveForwardBackward (vertical);
 			}
 		}
