@@ -3,8 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GunController : MonoBehaviour {
-	public GameObject bullet;
 	float bulletInterval;
+
+	public GameObject bullet;
+	public GameObject bulletExit;
+	public Camera playerCamera;
+//	public float speed = 20;
+
 
 	void start(){
 		bulletInterval = 0.0f;
@@ -14,17 +19,26 @@ public class GunController : MonoBehaviour {
 	void Update () {
 
 		bulletInterval += Time.deltaTime;
+
 		if(Input.GetKeyDown(KeyCode.Space)){
-			print ("spaceキーおした（１）");
 			if (bulletInterval >= 0.2f){
+				//キー操作の場合
 				GenerateBullet ();	
 			}
 		}
+		//Oculus操作の場合
 
 	}
 
 	void GenerateBullet(){
 		bulletInterval = 0.0f;
-		Instantiate (bullet, transform.position, Quaternion.identity);
+
+		//bulletの出現場所決定
+		Vector3 pos = bulletExit.transform.position;
+
+		//bulletの方向変更
+//		bullet.transform.rotation = playerCamera.transform.rotation;
+		Instantiate (bullet, pos, playerCamera.transform.rotation);
 	}
+
 }
