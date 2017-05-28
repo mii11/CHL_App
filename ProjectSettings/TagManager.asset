@@ -3,10 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Core
-  - PlayerBullet
-  - Enemy
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -16,28 +13,28 @@ TagManager:
   - UI
   - 
   - 
+  - CharactersSebLu
+  - CharactersGuards
+  - Eyes
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Mask
+  - Particles
+  - PlaneReflections
+  - Crowd
+  - AreaLights
+  - Crowd Object
+  - Crowd Ground
+  - Characters
+  - Interior
+  - Tunnel
+  - Exterior
+  - Terrain
+  - Dream
+  - SlateUI
+  - Sky
+  - ParticleForcesPuddleDetailTest
+  - ParticleForcesPuddle
   - 
   - 
   m_SortingLayers:
