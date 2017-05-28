@@ -8,7 +8,7 @@ public class GunController : MonoBehaviour {
 	public GameObject bullet;
 	public GameObject bulletExit;
 	public Camera playerCamera;
-//	public float speed = 20;
+	//	public float speed = 20;
 
 
 	void start(){
@@ -37,7 +37,7 @@ public class GunController : MonoBehaviour {
 		Vector3 pos = bulletExit.transform.position;
 
 		//bulletの方向変更
-//		bullet.transform.rotation = playerCamera.transform.rotation;
+		//		bullet.transform.rotation = playerCamera.transform.rotation;
 		Instantiate (bullet, pos, playerCamera.transform.rotation);
 	}
 
