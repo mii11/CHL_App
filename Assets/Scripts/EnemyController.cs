@@ -2,25 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour {
 	public GameObject coreObj;
+	Animation enemyAnimation;
+	BoxCollider enemyBoxCollider;
+	SphereCollider coreCollider;
+	bool isDead;
+
+	//HP
 	public int curHp = 100;
 	int fullHp;
 	int damageHp = 10;
 	public Image hpGauge;
 	GameObject hp;
-	//	GameObject gun;
-	//	Transform gunTransform;
+
 
 	public float enemySpeed;
-
 	//襲撃の間隔をあける
 	float motionInterval;
-	Animation enemyAnimation;
-	BoxCollider enemyBoxCollider;
-	SphereCollider coreCollider;
-	bool isDead;
+	public Transform target;
+	public Transform[] targets;
+	public NavMeshAgent agent;
+	public int curTarget = 0;
+
 
 	void Start () {
 		motionInterval = 0.0f;
@@ -40,7 +46,8 @@ public class EnemyController : MonoBehaviour {
 			if (curHp > 0) {
 				switch (enemyAnimation.name) {
 				case "SPIDER":
-					enemyAnimation.Play ("Idle");
+//					enemyAnimation.Play ("Idle");
+					Motion();
 					break;
 				case "":
 					break;
@@ -92,9 +99,10 @@ public class EnemyController : MonoBehaviour {
 	void Motion(){
 		transform.Translate (-1 * transform.forward * Time.deltaTime * enemySpeed);	
 		motionInterval += Time.deltaTime;
-		print (motionInterval);
+		print ("intervalは" + motionInterval + ": " + "前");
+		enemyAnimation.Play ("Walk");
 
-		print ("前");
+
 		if ((motionInterval >= 0.8f) && (motionInterval < 1.4f)) {
 			print ("右に移動");
 			transform.Translate (Vector3.right * Time.deltaTime * enemySpeed);
