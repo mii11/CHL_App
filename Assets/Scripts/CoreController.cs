@@ -3,24 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CoreController : MonoBehaviour {
-	Animator anim;
-	public bool IsAttackCore;
-	//	Animation animation;
+	public GameObject enemyObj;
+	EnemyController enemyController;
 
-	// Use this for initialization
-	void Start () {
-		IsAttackCore = false;
-//		anim = GetComponent<Animator> ();	
+
+	void Start(){
+		//EnemyControllerクラスの変数にenemyオブジェクトのコンポーネントを代入する
+		enemyController = enemyObj.GetComponent<EnemyController> ();
 	}
-	
+
 	void OnTriggerEnter(Collider other){
-//		print ("CoreのColliderの中");
+		print ("CoreのColliderの中");
 
 		if (other.gameObject.tag == "PlayerBullet") {
 			if (gameObject.tag == "Core") {
-				print ("Core にあたった");
-				IsAttackCore = true;
-//				anim.SetBool ("IsAttackCore", true);
+//				print ("Core にあたった");
+				enemyController.curHp = 0;
+				enemyController.Die();
 			}
 		}
 
